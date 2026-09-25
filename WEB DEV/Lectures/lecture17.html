@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API</title>
+    <style>
+        body{
+            display:flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap:20px;
+        }
+        .card{
+            width:200px;
+            border:1px solid black;
+            display:flex;
+            flex-direction:column;
+            padding:10px;
+        }
+        img{
+            width:150px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        async function fetchProducts(){
+            let response = await fetch('https://dummyjson.com/products')
+            // console.log(response)
+            let data = await response.json()                    // used to convert the response into json format
+            let elements = data.products               // used to access the products array from the data object
+            let body = document.querySelector('body')
+            // console.log(data.products)
+            elements.forEach((item,index)=>{
+                // console.log(item,index)
+                let card = document.createElement('div')
+                card.innerHTML = `<img src=${item.images[0]} alt=${item.title}/>
+                                  <h3>${item.title}</h3>`
+                                  <strong style= "color:green;font-size:18px;">$${item.price}</strong>
+                                  
+                card.classList.add('card')
+                body.append(card)
+            })
+        }
+
+        // async function fetchRecipes(){
+        //     let response = await fetch('https://dummyjson.com/recipes')
+        //     // console.log(response)
+        //     let data = await response.json()                    // used to convert the response into json format
+        //     console.log(data.skip)                              // used to access the skip property from the data object
+        // }
+
+        // async function fetchUsers(){
+        //     let response = await fetch('https://dummyjson.com/users')
+        //     // console.log(response)
+        //     let data = await response.json()                    // used to convert the response into json format
+        //     console.log(data.total)                             // used to access the total property from the data object
+        // }
+
+
+        // async function fetchCarts(){
+        //     let response = await fetch('https://dummyjson.com/carts')
+        //     // console.log(response)
+        //     let data = await response.json()                    // used to convert the response into json format
+        //     console.log(data.limit)
+        // }
+        
+        fetchProducts()
+        // fetchRecipes()
+        // fetchUsers()
+        // fetchCarts()
+
+
+
+    
+    </script>
+    
+</body>
+</html>

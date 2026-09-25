@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="heading" class="headingclass">Hello</h1>
+    <div id="divTag"></div>
+    <h2 id="head2"></h2>
+    <!-- <h1>Hello2</h1>
+    <h1>Hello3</h1> -->
+    <script>
+        // let heading = document.getElementById("heading")
+        // let heading = document.getElementsByClassName("headingclass");
+        // let heading = document.querySelector('h1');  for first h1
+        // let heading = document.querySelector('#heading');   for id
+        // let heading = document.querySelector('.headingclass');  for class
+        // let heading = document.querySelectorAll('h1');  for all
+        // console.log(heading)
+
+        let head = document.getElementById("heading")
+        let div=document.getElementById("divTag")
+        head.style.color = "red";
+        head.innertext = "New Hello Text";
+
+        div.innerHTML = `<h1>HELLO DIV TAG</h1>
+        <p>This is a paragraph inside div</p>
+        <img src="" alt="Image not found">`
+
+        let head2=document.getElementById("head2");
+        // head2.innertext = "Hello          Head2";             consider extra space
+        // head2.textContent ="Hello Head2";                     not consider extra space
+
+        
+    </script>
+
+    
+</body>
+</html>

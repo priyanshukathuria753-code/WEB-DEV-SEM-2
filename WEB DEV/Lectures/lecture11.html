@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let cart=['shirt','t-shirt', 'pants','socks']
+        function createOrder(cart,callback){
+            console.log('Creating Order...',cart)
+            setTimeout(()=>{
+                let orderId = 1234;
+                callback(orderId);
+            },5000)
+        }
+
+        function makePayment(orderId,callback){
+            console.log("Processing Payment for order id: ",orderId)
+            setTimeout(()=>{
+                let updateInv = "cart - 1,Inventory Updated";
+                callback(updateInv);
+            },7000)
+        }
+
+        function updateInventory(updateInv,callback){
+            console.log(updateInv)
+            setTimeout(()=>{
+                let message = "Order Completed"
+                callback(message);
+            },4000)
+        }
+
+        function orderStatus(message){
+            console.log(message)
+
+        }
+
+        createOrder(cart,function(orderId){
+            makePayment(orderId,function(updateInv){
+                updateInventory(updateInv,function(message){
+                    orderStatus(message)
+                })
+            })
+        })
+    </script>
+    
+</body>
+</html>
+
+
+<!-- #difficulty in error handling -->
+ <!-- inversion of control
+ pyramald of doom
+ code become complex  -->

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    text-align: center;
+    margin: 1vh auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+body{
+    background: linear-gradient(to right, seagreen,teal);
+}
+
+#hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+}
+
+#main-event-add-container {
+    height: 80vh;
+    width: 30vw;
+    border: 2px solid black;
+    background-color: white;
+    border-radius: 2vh;
+}
+
+#allEventContainer{
+    height: 80vh;
+    width: 60vw;
+    border: 2px solid black;
+    background-color: white;
+    border-radius: 2vh;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 2vh 2vw;
+    gap: 2vmin;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.2rem;
+}
+
+form input{
+    font-size: 1.2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 0.5vh 0.5vw;
+    border: 1px solid black;
+    border-radius: 1vmin;
+}
+
+form select {
+    font-size: 1.2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 0.5vh 0.5vw;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 1vmin;
+}
+
+form textarea{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    resize: none;
+    height: 20%;
+    border-radius: 2vmin;
+    padding: 1vh;
+    border: 1px solid black;
+}
+
+form button{
+    color: white;
+    font-size: 1.5rem;
+    padding: 1vh;
+    background-color: rgb(0, 110, 255);
+    border: 1px solid white;
+    border-radius: 2vmin;
+    font-weight: 550;
+    cursor: pointer;
+}
+
+#EventShortcut h3{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 110, 255);
+    margin: 2vh 2vw;
+    font-size: 2rem;
+}
+
+.card {
+    height: 30vh;
+    width: 25vw;
+    border: 2px solid black;
+    border-radius: 2vmin;
+    background: linear-gradient(to right, rgb(230, 221, 221), rgb(231, 251, 255));
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    cursor: pointer;
+}
+.card h4{
+    font-size: 1.3rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 2vh 1vw;
+}
+.card .date{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: .5vh 1vw;
+}
+.card label{
+    background-color: rgb(0, 110, 255);
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 1vh 1vw;
+    border-radius: 2vmin;
+    margin: .5vh 1vw;
+}
+.card .des{
+    text-align: justify;
+    font-size: 0.8rem;
+    width: 80%;
+    height: 30%;
+    margin: 1vh 1vw;
+}
+
+.grid-card {
+    display: grid;
+    height: 80%;
+    grid-template-columns: auto auto;
+    gap: 2vw;
+    margin: 1vh 2.5vw;
+    overflow-y: scroll;
+}
+
+.cancel-btn {
+    position: relative;
+    left: 45vh;
+    top: 1vh;
+    background-color: rgb(63, 0, 0);
+    font-size: 1.1rem;
+    border-radius: 100%;
+    padding: 0.5vmin;
+    cursor: pointer;
+}
+    </style>
+</head>
+<body>
+    <h1>SMART EVENT DASHBOARD</h1>
+    <div id="hero">
+        <div id="main-event-add-container">
+            <h3>Add New Event</h3>
+            <form action="">
+                <label for="eventTitle">Event Title</label>
+                <input type="text" id="eventTitle" placeholder="event" required>
+                <br><br>
+
+                <label for="eventDate">Event Date :</label>
+                <input type="date" id="eventDate" placeholder="date" required>
+                <br><br>
+
+                <label for="eventCategory">Category :</label>
+                <select name="category" id="eventCategory" required>
+                    <option value="conference">Conference</option>
+                    <option value="workshop">Workshop</option>
+                    <option value="meetup">Meetup</option>
+                    <option value="webinar">Webinar</option>
+                    <option value="social">Social</option>
+                </select>
+                <br>
+                <label for="eventDescription">Description</label>
+                <textarea name="description" id="eventDescription" cols="30" rows="4"></textarea>
+                <br><br>
+
+                <button type="submit">Add Event</button>
+            </form>
+        </div>
+    
+
+    <div id="EventShortcut">
+        <h3>My Events</h3>
+
+        <div>
+            <button id="clear-event-btn">Clear All Events</button>
+            <button id="add-sample-btn">Add Sample Events</button>
+        </div>
+
+        <div id="allEventContainer">
+            No Events Added Yet
+            <div class="grid-card" id="grid-card">
+                <div class="card">
+                    <button class="cancel-btn" id="-1">&#x274C;</button>
+                    <h4>idea</h4>
+                    <p class="date">&#128197; 08-90-2003</p>
+                    <br>
+                    <label>Social</label>
+                    <p class="des">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum, vitae?</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        let form=document.querySelector('form')
+        let eventTitle = document.querySelector('#eventTitle')
+        let eventDate = document.querySelector('#eventDate')
+        let eventCategory = document.querySelector('#eventCategory')
+        let eventDescription = document.querySelector('#eventDescription')
+        let allEventContainer = document.querySelector('#allEventContainer')
+        let clearEventBtn = document.querySelector('#clear-event-btn')
+        let addSampleBtn = document.querySelector('#add-sample-btn')
+
+
+
+        function addEventFunction(event){
+            event.preventDefault()
+
+            let card=document.createElement('div')
+
+            card.innerHTML = `<button<X/button>
+                              <h4>${eventTitle.value}</h4>
+                              <span>${eventDate.value}</span><br>
+                              <span>${eventCategory.value}</span>
+                              <p>${eventDescription.value}</p>`
+
+            allEventContainer.innerHTML = "";
+            allEventContainer.append(card);
+
+            form.reset();
+
+            
+        }
+
+        function clearAllEventFunction(){
+                allEventContainer.innerHTML = `<h4>No Events Added Yet</h4>`
+
+            }
+        
+        function addSampleEventFunction(){
+            allEventContainer
+        }
+
+        form.addEventListener('submit',addEventFunction)
+        clearEventBtn.addEventListener('click',clearAllEventFunction)
+        addSampleBtn.addEventListener('click',addSampleEventFunction)
+        
+
+    </script>
+</body>
+</html>

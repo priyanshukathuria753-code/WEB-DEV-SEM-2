@@ -1,0 +1,2 @@
+Q1 create an input field where a user enter their name display the entered name in real time below the input field as a user type
+Q2 create a react appl. with the following pages home,about, context implement routing using react router so that naviation between pages without reloading the page

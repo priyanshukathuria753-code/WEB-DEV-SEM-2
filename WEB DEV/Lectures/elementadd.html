@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Hello1</h1>
+    <h1>Hello2</h1>
+    <h1>Hello4</h1>
+    <script>
+        let body=document.querySelector('body')
+        let box2=document.createElement('p')
+        let box=document.createElement('div')
+    
+        box.innerText = "Hello Div Created"
+        box2.innerText = "Hello Heading Created"
+
+        body.appendChild(box2)
+        // body.appendChild(box)
+
+        body.prepend(box)
+        
+    </script>
+</body>
+</html>

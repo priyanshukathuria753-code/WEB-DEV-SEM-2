@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+function ABC(){
+    console.log("Hello")
+}
+
+function D(){
+    console.log("Hello D")
+}
+
+function E(){
+    console.log("Hello E")
+}
+
+console.log("Synchronous Programming")
+
+Promise.resolve.then(()=>{
+    ABC()
+})
+setTimeout(()=>{
+    D()
+
+},10000)
+
+E();
+
+       
+    </script>
+</body>
+</html>

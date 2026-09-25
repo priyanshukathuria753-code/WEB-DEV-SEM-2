@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let cart = ["laptop","mobile","earphone"]
+
+        function createOrder(cart){
+            console.log("creating order...")
+            return new Promise((resolve,reject)=>{
+                setTimeout(() => {
+                if(cart.length>0){
+                    resolve ({
+                        orderID:12345,
+                        amount:5000
+                    })
+
+                }else{
+                    reject("cart is empty")
+                }
+            },5000)
+            })
+        }
+
+        function makePayment(order){
+            console.log("making payment...")
+            return new Promise((resolve,reject)=>{
+                let network = true;
+                setTimeout(() => {
+                    if(network){
+                        resolve({
+                            ...order,
+                            paymentID:123456,
+                        })
+                        
+                    }else{
+                        reject("payment failed")
+                    }
+                }, 5000);
+            })
+        }
+
+        function updateInventory(order){
+            console.log("updating inventory...")
+            return new Promise((resolve,reject)=>{
+                let inventoryAvailable = true;
+                setTimeout(() => {
+                    if(inventoryAvailable){
+                        resolve({
+                            ...order,
+                            inventoryStatus:true
+                        })
+                        
+                    }else{
+                        reject("inventory update failed")
+                    }
+                }, 5000);
+            })
+        }
+
+        function orderStatus(order){
+            console.log("updating order status...")
+            return new Promise((resolve,reject)=>{
+                let message = true;
+                setTimeout(() => {
+                    if(message){
+                        resolve({
+                            ...order,
+                            orderStatus:"Confirmed"
+                        })
+                        
+                    }else{
+                        reject("order is not confirmed yet")
+                    }
+                }, 5000);
+            })
+        }
+
+        createOrder(cart)
+        .then((order)=>{
+            console.log("order created for :",order)
+            return makePayment(order)
+        })
+        .then((order)=>{
+            console.log("payment made",order)
+            return updateInventory(order)
+        })
+        .then((order)=>{
+            console.log("inventory updated",order)
+            return orderStatus(order)
+        })
+        .then((order)=>{
+            console.log("Confirmed order",order)
+        })
+        .catch((err)=>{
+            console.log("Error:",err)
+        })                
+    </script>
+</body>
+</html>

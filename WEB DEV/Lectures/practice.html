@@ -1,0 +1,114 @@
+<!-- h1,p,div
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="heading">1</h1>
+    <p id="paragraph">2</p>
+    <div id="container">3</div>
+
+    <script>
+        let head=document.getElementById('heading')
+        head.style.color='blue';
+        head.style.backgroundColor='green';
+        console.log(head.color);
+
+        let para=document.getElementById('paragraph')
+        para.style.color='yellow';
+        para.style.backgroundColor='blue';
+
+        let di=document.getElementById('container')
+        di.style.color='red';
+        di.style.backgroundColor='orange';
+
+        console.log
+
+    </script>
+    
+</body>
+</html> -->
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello 1</h1>
+      <h1>Hello 2</h1>
+
+        <h1>Hello 3</h1>
+
+
+
+    <script>
+        let body = document.querySelector('body')
+        let box = document.createElement('div')
+        box.innerText = "Hello Created Div"
+
+        // body.appendChild(box)
+        body.prepend(box)
+    </script>
+    
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #outer{
+            background-color: aquamarine;
+            width: 500px;
+            height: 400px;
+
+        }
+        #middle{
+            background-color: bisque;
+            width: 300px;
+            height: 200px;
+
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="outer">
+        <div id="middle">
+            <button id="inner">Click</button>
+        </div>
+    </div>
+
+    <script>
+        let outer = document.querySelector('#outer')
+        let middle = document.querySelector('#middle')
+        let inner = document.querySelector('#inner')
+
+        outer.addEventListener('click',function(event){
+            event.stopPropagation();
+            alert('Outer Div')
+        },true)
+
+        
+        middle.addEventListener('click',function(){
+            alert('Middle Div')
+        },true)
+
+        
+        inner.addEventListener('click',function(event){
+            
+            alert('inner Div')
+        })
+    </script>
+</body>
+</html>

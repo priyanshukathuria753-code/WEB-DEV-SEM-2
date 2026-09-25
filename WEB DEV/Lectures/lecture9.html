@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Promise function -->
+     <script>
+        function boilwater(){
+            return new Promise((resolve)=>{
+                console.log('Boiling water...')
+                setTimeout(()=>{
+                    console.log('water boiled')
+                    resolve();
+                },10000)
+            })
+        }
+
+        function addMaggie(){
+            return new Promise((resolve)=>{
+                console.log('adding Maggie...')
+                setTimeout(()=>{
+                    console.log('maggie Added')
+                    resolve();
+                },6000)
+            })
+        }
+
+        function addMasala(){
+            return new Promise((resolve)=>{
+                console.log('adding Masala...')
+                setTimeout(()=>{
+                    console.log('Masala Added')
+                    resolve();
+                },3000)
+            })
+        }
+
+        function serve(){
+            console.log('Start Serving and enjoy')
+        }
+
+        // boilwater()
+        // .then(addMaggie)
+        // .then(addMasala)
+        // .then(serve)
+        // .catch(()=>{
+        //     console.log('Something went wrong')
+        // })
+
+        async function cookMaggie(){
+            await boilwater()
+            await addMaggie()
+            await addMasala()
+            serve();
+        }
+
+        cookMaggie()
+        
+     </script>
+
+</body>
+</html>

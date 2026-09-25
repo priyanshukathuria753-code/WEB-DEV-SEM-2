@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // localStorage.setItem("Name","Chitti")
+        // localStorage.setItem("Name","XYZ")     //To update the value of the key "Name" It is case sensitive
+        // localStorage.setItem("Age", 25)
+        // let data = localStorage.getItem("Name") //To get the value of the key "Name"
+        // console.log(data)
+        // // localStorage.removeItem("Name")
+        // localStorage.clear() //To clear all the data from localStorage  
+
+        // let object1 = {
+        //     name: "Chitti",
+        //     age: 20,
+        //     city: "Hyderabad"
+        // }
+
+        // localStorage.setItem("Imp_data",JSON.stringify(object1)) //It will store the data in string format [object Object](Converted to json stringify)
+        // let data2 = JSON.parse(localStorage.getItem("Imp_data")) //It will get the data in string format
+        // console.log(data2)
+
+        // let arr=[1,2,3,4,5]
+        // localStorage.setItem("Array",arr)
+        // let data3 = localStorage.getItem("Array")
+        // console.log(data3.split(','))
+
+        localStorage.setItem("Name","Alex")
+
+        let data1 = localStorage.getItem("Name")
+        console.log(data1)
+
+        let object1 = {
+            name: "Alex",
+            age: 30,
+            city: "Gurugram"
+        }
+        localStorage.setItem("data",JSON.stringify(object1))
+        let data2 = JSON.parse(localStorage.getItem("data"))
+        console.log(data2)
+
+        let arr = [9,8,7,6,5,4]
+        localStorage.setItem("Array",arr)
+        let data3 = localStorage.getItem("Array")
+        console.log(data3.split(','))
+        
+
+
+
+
+    </script>
+</body>
+</html>

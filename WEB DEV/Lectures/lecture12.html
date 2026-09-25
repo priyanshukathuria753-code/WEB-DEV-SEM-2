@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let flag = true;
+    
+        let wada = new Promise((resolve,reject)=>{
+            if(flag){
+                resolve("Promise completed")
+            }else{
+                reject("Promise rejected")
+            }
+        })
+
+
+        console.log(wada)
+
+        wada.then(result=>console.log(result)).catch(error=>console.log(error))
+
+
+        // let time = 11
+        // let shop = new Promise((resolve,reject)=>{
+        //     if(time<10){
+        //         resolve("closed")
+        //     }else{
+        //         reject("open")
+        //     }
+        // })
+
+        // shop.then(result=>console.log(result)).catch(error=>console.log(error))
+
+
+
+
+
+        // let arr = ["laptop","mobile","mouse","keyboard","tablet"]
+        // let input =
+        // let store = new Promise((resolve,reject)=>){
+        //     if()
+        // }
+    </script>
+
+    
+</body>
+</html>

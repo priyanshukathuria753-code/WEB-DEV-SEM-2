@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Async Weather Tracker</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background: linear-gradient(to bottom,#1fa0e5,#2d3c77);
+    padding:30px;
+}
+
+header{
+    text-align:center;
+    color:white;
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:30px;
+}
+
+.main-container{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.card{
+    background:#f4f4f4;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.card h3{
+    margin-bottom:15px;
+    font-size:20px;
+}
+
+form{
+    display:flex;
+    gap:10px;
+}
+
+input{
+    flex:1;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #e9f9c2;
+    font-size:14px;
+}
+
+button{
+    background:#ff7a32;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#e66822;
+}
+
+#fetcheddatabox,
+#searchcitiesbox{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    min-height:60px;
+}
+
+#search_history{
+    margin-top:25px;
+}
+
+.console-section{
+    max-width:1200px;
+    margin:30px auto 0;
+}
+
+.console-box{
+    background:#f4f4f4;
+    border-radius:15px;
+    padding:20px;
+}
+
+.console-output{
+    background:#1f2a5a;
+    height:40px;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+#searchcitiesbox div{
+    display: inline-block;
+    background: rgb(140, 151, 247);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin: 4px 4px 0 0;
+    font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>⛅ Async Weather Tracker</header>
+
+<div class="main-container">
+
+    <div>
+        <div class="card">
+            <h3>Search City</h3>
+            <form>
+                <input type="text" id="searchcity" placeholder="Enter city name..." required>
+                <button type="submit">Search</button>
+            </form>
+
+            <div id="search_history">
+                <h3 style="margin-top:20px;">Search History</h3>
+                <div id="searchcitiesbox"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Weather Info</h3>
+        <div id="fetcheddatabox"></div>
+    </div>
+
+</div>
+
+<script>
+let API_KEY = "62999308685c7873863d01d999af142c";
+let cityInput = document.querySelector("#searchcity");
+let form = document.querySelector("form");
+let weatherBox = document.querySelector("#fetcheddatabox");
+let historyBox = document.querySelector("#searchcitiesbox");
+
+
+async function getWeatherInfo(city){
+    try{
+        let response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+        );
+        let data = await response.json();
+
+        if(data.cod !== 200){
+            weatherBox.innerHTML = "City not found ❌";
+            return;
+        }
+
+        weatherBox.innerHTML = `
+            <div><strong>City:</strong> ${data.name}</div>
+            <div><strong>Temp:</strong> ${data.main.temp}°C</div>
+            <div><strong>Humidity:</strong> ${data.main.humidity}%</div>
+            <div><strong>Wind Speed:</strong> ${data.wind.speed} m/s</div>
+            <div><strong>Weather:</strong> ${data.weather[0].description}</div>
+        `;
+
+        addToHistory(city);
+        renderHistory(JSON.parse(localStorage.getItem("cities")) || []);
+
+    }catch(error){
+        weatherBox.innerHTML = "Error fetching data ⚠";
+    }
+}
+
+function addToHistory(city){
+    let cities = JSON.parse(localStorage.getItem("cities")) || [];
+    let cityLower = city.toLowerCase();
+    cities = cities.filter(c => c.toLowerCase() !== cityLower);
+    cities.unshift(city);
+    localStorage.setItem("cities", JSON.stringify(cities));
+    renderHistory(cities);
+}
+function renderHistory(cities){
+    historyBox.innerHTML = ""; 
+    cities.forEach(city => {
+        let div = document.createElement("div");
+        div.textContent = city;
+        historyBox.appendChild(div);
+    });
+}
+
+form.addEventListener("submit",(e)=>{
+    e.preventDefault();
+    let cityName = cityInput.value.trim();
+
+    if(cityName !== ""){
+        getWeatherInfo(cityName);
+        cityInput.value = "";
+    }
+});
+</script>
+
+</body>
+</html>
